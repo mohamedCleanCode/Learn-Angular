@@ -1,0 +1,60 @@
+<section class="container">
+  <!-- Heading -->
+  <div>
+    <h1 class="text-center">{{ title }}</h1>
+    <img
+      [src]="image"
+      alt="to-do image"
+      class="d-block mx-auto object-fit-cover rounded"
+    />
+  </div>
+  <!-- Input -->
+  <div class="row my-2">
+    <div class="col-9">
+      <input
+        type="text"
+        placeholder="New Task"
+        class="form-control text-capitalize"
+        [(ngModel)]="newTask"
+      />
+    </div>
+    <div class="col-3">
+      <button class="btn btn-primary" (click)="addNewTask()">Add Task</button>
+    </div>
+  </div>
+  <!-- Todo list -->
+  @if (todoList.length >= 1){
+  <table class="w-100">
+    <thead>
+      <tr>
+        <th class="w-25">#</th>
+        <th class="w-25">Todo</th>
+        <th class="w-50">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (todo of todoList; track $index) {
+      <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ todo }}</td>
+        <td>
+          <div>
+            <button class="me-2 btn btn-warning" (click)="editTask($index)">
+              Edit
+            </button>
+            <button
+              class="btn btn bg-danger text-white"
+              (click)="removeTask($index)"
+            >
+              Remove
+            </button>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else {
+  <p class="text-center text-warning">No todo list yet!</p>
+  }
+</section>
