@@ -14,6 +14,8 @@ export class ToDoComponent {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSFb0b4D0QjeeepuAa1nmcksjmNSC0dfRijA&s';
   newTask: string = '';
   todoList: string[] = [];
+
+  // Add new task method
   addNewTask() {
     if (this.newTask.trim() === '') {
       alert('Please enter a valid task');
@@ -22,6 +24,7 @@ export class ToDoComponent {
     this.todoList.push(this.newTask.trim());
     this.newTask = '';
   }
+  // Edit task method
   editTask(i: number) {
     const task = this.todoList[i];
     const newTask = prompt('Edit task:', task);
@@ -29,6 +32,7 @@ export class ToDoComponent {
       this.todoList[i] = newTask.trim();
     }
   }
+  // Remove task method
   removeTask(i: number) {
     const isSure = prompt('Are you sure? (yes/no)', 'yes');
     if (isSure === 'yes') {
